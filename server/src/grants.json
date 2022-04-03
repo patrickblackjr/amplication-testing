@@ -21,7 +21,7 @@
     "role": "admin",
     "resource": "User",
     "action": "create:any",
-    "attributes": "*"
+    "attributes": "*,!roles"
   },
   {
     "role": "admin",
