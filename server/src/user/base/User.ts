@@ -34,21 +34,21 @@ class User {
   createdAt!: Date;
 
   @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  email!: string;
-
-  @ApiProperty({
     required: false,
     type: () => [Event],
   })
   @ValidateNested()
   @Type(() => Event)
   @IsOptional()
-  events?: Array<Event>;
+  createdEvents?: Array<Event>;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: false,

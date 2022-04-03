@@ -30,17 +30,6 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  email?: string;
-
-  @ApiProperty({
-    required: false,
     type: () => EventUpdateManyWithoutUsersInput,
   })
   @ValidateNested()
@@ -49,7 +38,18 @@ class UserUpdateInput {
   @Field(() => EventUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  events?: EventUpdateManyWithoutUsersInput;
+  createdEvents?: EventUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  email?: string;
 
   @ApiProperty({
     required: false,

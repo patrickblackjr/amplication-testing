@@ -489,14 +489,14 @@ export class UserControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Get("/:id/events")
+  @common.Get("/:id/createdEvents")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "read",
     possession: "any",
   })
   @ApiNestedQuery(EventFindManyArgs)
-  async findManyEvents(
+  async findManyCreatedEvents(
     @common.Req() request: Request,
     @common.Param() params: UserWhereUniqueInput,
     @nestAccessControl.UserRoles() userRoles: string[]
@@ -508,7 +508,7 @@ export class UserControllerBase {
       possession: "any",
       resource: "Event",
     });
-    const results = await this.service.findEvents(params.id, {
+    const results = await this.service.findCreatedEvents(params.id, {
       ...query,
       select: {
         alertSuppression: true,
@@ -560,19 +560,19 @@ export class UserControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Post("/:id/events")
+  @common.Post("/:id/createdEvents")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async createEvents(
+  async createCreatedEvents(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: UserWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      events: {
+      createdEvents: {
         connect: body,
       },
     };
@@ -605,19 +605,19 @@ export class UserControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Patch("/:id/events")
+  @common.Patch("/:id/createdEvents")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async updateEvents(
+  async updateCreatedEvents(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: EventWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      events: {
+      createdEvents: {
         set: body,
       },
     };
@@ -650,19 +650,19 @@ export class UserControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Delete("/:id/events")
+  @common.Delete("/:id/createdEvents")
   @nestAccessControl.UseRoles({
     resource: "User",
     action: "update",
     possession: "any",
   })
-  async deleteEvents(
+  async deleteCreatedEvents(
     @common.Param() params: UserWhereUniqueInput,
     @common.Body() body: UserWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      events: {
+      createdEvents: {
         disconnect: body,
       },
     };
