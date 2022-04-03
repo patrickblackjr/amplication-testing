@@ -1,0 +1,19 @@
+{
+  "dataServiceGeneratorVersion": "0.12.3",
+  "appInfo": {
+    "name": "TechReq",
+    "description": "",
+    "version": "j0yzbct4",
+    "id": "cl1jo8jv5117616301s68gxkv1u2",
+    "url": "https://app.amplication.com/cl1jo8jv5117616301s68gxkv1u2",
+    "settings": {
+      "dbHost": "localhost",
+      "dbName": "",
+      "dbPassword": "admin",
+      "dbPort": 5432,
+      "dbUser": "admin",
+      "appId": "cl1jo8jv5117616301s68gxkv1u2",
+      "authProvider": "Jwt"
+    }
+  }
+}
