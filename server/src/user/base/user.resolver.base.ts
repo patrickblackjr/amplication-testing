@@ -236,7 +236,7 @@ export class UserResolverBase {
     action: "read",
     possession: "any",
   })
-  async events(
+  async createdEvents(
     @graphql.Parent() parent: User,
     @graphql.Args() args: EventFindManyArgs,
     @gqlUserRoles.UserRoles() userRoles: string[]
@@ -247,7 +247,7 @@ export class UserResolverBase {
       possession: "any",
       resource: "Event",
     });
-    const results = await this.service.findEvents(parent.id, args);
+    const results = await this.service.findCreatedEvents(parent.id, args);
 
     if (!results) {
       return [];

@@ -2,8 +2,8 @@ import { EventUpdateManyWithoutUsersInput } from "./EventUpdateManyWithoutUsersI
 
 export type UserUpdateInput = {
   assignedEvents?: EventUpdateManyWithoutUsersInput;
+  createdEvents?: EventUpdateManyWithoutUsersInput;
   email?: string;
-  events?: EventUpdateManyWithoutUsersInput;
   firstName?: string | null;
   lastName?: string | null;
   password?: string;

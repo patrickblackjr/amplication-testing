@@ -32,17 +32,6 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
-  })
-  @Type(() => StringFilter)
-  @IsOptional()
-  @Field(() => StringFilter, {
-    nullable: true,
-  })
-  email?: StringFilter;
-
-  @ApiProperty({
-    required: false,
     type: () => EventListRelationFilter,
   })
   @ValidateNested()
@@ -51,7 +40,18 @@ class UserWhereInput {
   @Field(() => EventListRelationFilter, {
     nullable: true,
   })
-  events?: EventListRelationFilter;
+  createdEvents?: EventListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  email?: StringFilter;
 
   @ApiProperty({
     required: false,

@@ -4,8 +4,8 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 export type UserWhereInput = {
   assignedEvents?: EventListRelationFilter;
+  createdEvents?: EventListRelationFilter;
   email?: StringFilter;
-  events?: EventListRelationFilter;
   firstName?: StringNullableFilter;
   id?: StringFilter;
   lastName?: StringNullableFilter;

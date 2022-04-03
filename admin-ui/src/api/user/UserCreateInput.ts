@@ -2,8 +2,8 @@ import { EventCreateNestedManyWithoutUsersInput } from "./EventCreateNestedManyW
 
 export type UserCreateInput = {
   assignedEvents?: EventCreateNestedManyWithoutUsersInput;
+  createdEvents?: EventCreateNestedManyWithoutUsersInput;
   email: string;
-  events?: EventCreateNestedManyWithoutUsersInput;
   firstName?: string | null;
   lastName?: string | null;
   password: string;

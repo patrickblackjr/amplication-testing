@@ -29,14 +29,6 @@ class UserCreateInput {
   assignedEvents?: EventCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  email!: string;
-
-  @ApiProperty({
     required: false,
     type: () => EventCreateNestedManyWithoutUsersInput,
   })
@@ -46,7 +38,15 @@ class UserCreateInput {
   @Field(() => EventCreateNestedManyWithoutUsersInput, {
     nullable: true,
   })
-  events?: EventCreateNestedManyWithoutUsersInput;
+  createdEvents?: EventCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  email!: string;
 
   @ApiProperty({
     required: false,

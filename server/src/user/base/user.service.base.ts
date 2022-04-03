@@ -83,7 +83,7 @@ export class UserServiceBase {
       .assignedEvents(args);
   }
 
-  async findEvents(
+  async findCreatedEvents(
     parentId: string,
     args: Prisma.EventFindManyArgs
   ): Promise<Event[]> {
@@ -91,6 +91,6 @@ export class UserServiceBase {
       .findUnique({
         where: { id: parentId },
       })
-      .events(args);
+      .createdEvents(args);
   }
 }
