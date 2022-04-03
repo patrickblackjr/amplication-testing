@@ -1,0 +1,68 @@
+datasource postgres {
+  provider = "postgresql"
+  url      = env("POSTGRESQL_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  assignedEvents Event[]  @relation(name: "assigned")
+  createdAt      DateTime @default(now())
+  email          String   @unique
+  events         Event[]  @relation(name: "EventsOnUser")
+  firstName      String?
+  id             String   @id @default(cuid())
+  lastName       String?
+  password       String
+  roles          String[]
+  updatedAt      DateTime @updatedAt
+  username       String   @unique
+}
+
+model Event {
+  alertSuppression Boolean
+  assigned         User?                 @relation(name: "assigned", fields: [assignedId], references: [id])
+  assignedId       String?
+  changeNumber     String?
+  client           Client                @relation(fields: [clientId], references: [id])
+  clientId         String
+  createdAt        DateTime              @default(now())
+  createWebex      Boolean
+  description      String?
+  end              DateTime
+  eventType        EnumEventEventType
+  id               String                @id @default(cuid())
+  resourceType     EnumEventResourceType
+  start            DateTime
+  title            String
+  updatedAt        DateTime              @updatedAt
+  user             User?                 @relation(name: "EventsOnUser", fields: [userId], references: [id])
+  userId           String?
+  webexMeetingInfo String?
+}
+
+model Client {
+  abbreviation String
+  createdAt    DateTime @default(now())
+  domain       String
+  events       Event[]
+  id           String   @id @default(cuid())
+  name         String
+  updatedAt    DateTime @updatedAt
+}
+
+enum EnumEventEventType {
+  StandardMonthlyPatching
+  Mtsm
+  MeditechClientUpdate
+  OtherOneOff
+}
+
+enum EnumEventResourceType {
+  L2Meditech
+  Ams
+  Infrastructure
+  Citrix
+}
